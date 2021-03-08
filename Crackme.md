@@ -31,7 +31,7 @@ Crackme0x04
 
 Honestly, I gave a sample input of 12345 and it worked :)
 But coming to the actual solution:
-Breaking at <scanf@plt>, it shows we have to give a string as input. Main function now calls the check function.Breaking at <sscanf@plt>, shows that each alaphet of the string that we inputted is taken an converted to a decimal and then stored at edx and then added and compared to 0xf(15).The process runs in a loop through the length of outr input string. 
+Breaking at <scanf@plt>, it shows we have to give a string as input. Main function now calls the check function.Breaking at <sscanf@plt>, shows that each alaphet of the string that we inputted is taken an converted to a %d and then stored at edx and then added and compared to 0xf(15).The process runs in a loop through the length of outr input string. 
 So basically what this code does is to take our input , let’s say 12345 and and add it’s digits (1+2+3+4+5) and checks if it’s final sum=15.
 If we give 54321, we will get ‘Password OK!’
 
