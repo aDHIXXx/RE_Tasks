@@ -44,19 +44,23 @@ The LSB is taken and is fed through a add eax,0x1 command . As we know that even
 How I checked if my thinking of how parell work is correct: When i entered 64321 , it showed error. But when i entered all even cobinations , it worked.
 
 Crackme0x06
+
 The phase_6, check and parallef functions are same as the previous one, but here we have an extra function --> dummy.
 From pd dummy,  we put the break at <strncmp>,we can see that “LOLO” is being compared. This is the enviornment variable.
 So we have to run our program as “ LOLO= ./crackme0x06” and give the input as 12346( or any combo thta adds upto 16 digits being 0) 
 
 Crackme0x07
+
 The ELF given is stripped. So we have to go the nontraditional method. I did ‘info file’ to get where my .text lies. It was from 0x08048400. So with code from doing x/384i 0x08048400 and using start , we can see that this crackme is also same as the previous one.
 We have to input a number whose sum of digits is 16, also  without it’s first 4 being 0. Hence , to crack it , we put 12346.
 
 Crackme0x08
+
 Same as the previous one, but here we compare it with 16, but the number should have 9 digits.
 Input: 111111118
 
 Crackme0x09
+
 Similar to 0x07 , but the last digit must be an even number. So, 12346 can be our desired input.
 
 
