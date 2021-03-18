@@ -18,12 +18,18 @@ In pd phase_2, we can see that:
 6. Then this cmd comes: jle    0x8048b76 <phase_2+46>, which makes us go again in loop (if lebx<6). The eax is again increased to 3 and then multiplied with our second input and checked and this goes one.
 
 The numbers are:
-    • 1
-    • 1*2=2
-    • 2*3 =6
-    • 6*4=24
-    • 24*5=120
-    • 120*6=720
+    1
+    
+    1*2=2
+    
+    2*3 =6
+    
+    6*4=24
+    
+    24*5=120
+    
+    120*6=720
+    
 Our flag is 1 2 6 24 120 720
 
 PHASE_3
@@ -40,13 +46,21 @@ Like:
 If 0, then it jumps to '0x8048be0' and bl =0x71 and our last inputted integer is compared to 0x309, which is 777. Then we jumps to +247, where our bl is compared to our character input.
 ||ly for all numbers till 7. The series is:
 0 q 777
+
 1 b 214
+
 2 b 755
+
 3 k 251
+
 4 o 160
+
 5 t 458
+
 6 v 780
+
 7 b 524
+
 Any one can be inputted as the flag.
 
 PHASE_4
