@@ -48,3 +48,25 @@ If 0, then it jumps to '0x8048be0' and bl =0x71 and our last inputted integer is
 6 v 780
 7 b 524
 Any one can be inputted as the flag.
+
+PHASE_4
+
+From pd phase_4, by breaking at <sscanf@plt>, we can see the format “%d”, which means we have to give an integer as our input. Our input is then checker whther it is greter than 0 or not. Then eax is pushed into stack and <func4> is called. 
+
+From pd func4, first of all our input is moved to ebx and checks if our input is greater than 1. Then from this cmd: 0x08048cb3 <+19>:	lea    eax,[ebx-0x1], we can see that eax now has input-1. Now eax is pushed into the stack and the function <func4> is called again. 
+Now the value of eax is moved to esi and eax =input-2.Now after pushing eax into the stack, <func4> is called again. Then eax=eax+esi.
+
+From phase_4, we can see that the result of func4 is compared to 55. We can assume that it is a recusrive function on fibinoacci series. As it is compared to 55, we have to normally input 10 as it 55 is the 10th term, but as the we don’t take in 0, we have to subtract 1 from it.
+INPUT: 9
+
+PHASE_5
+
+From pd phase_5, we can see that it has calls a function <string_length>. The length of our string is them compared with 0x6 in <+23>. So our input must be a 6-lettered string. Then there is a <strings_not_equal> function, from where we can get that our inputted string (after some process: I had inputted qwerty, which changed to shareb ) is compared with “giants”.
+Now about the proceedures: 
+In <+38>, we can see that 0x804b220 is pushed into esi. Doing x/s, we will get "isrveawhobpnutfg\260\001".
+This is the reference string. So whta this program does is :
+it takes our input , let’s say qwerty and then :
+q is taken to al and the al AND 0xf is done and the resut is stored to eax.
+So if al AND 0xf gives 0xf (i.e the position of “g” in isrveawhobpnutfg\260\001), then our input is correct. 
+We now can see that o AND 0xf =0xf, hence ‘o’ is the first alphabet.
+So now we can get our desired input: opekma.
